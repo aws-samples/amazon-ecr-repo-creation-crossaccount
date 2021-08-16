@@ -5,3 +5,7 @@ RepositoryName - ECR Repository Name
 Account - Account with Cross Account Role
 ### Outputs:
 RepoArn - ECR Repository ARN
+## Contributors
+1. Jose perez
+2. Kamal Joshi
+3. Viyoma Sachdeva
