@@ -1,17 +1,7 @@
-## My Project
-
-TODO: Fill this README out!
-
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description on GitHub
-
-## Security
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
-
-## License
-
-This library is licensed under the MIT-0 License. See the LICENSE file.
-
+## ECRRepoCreate.yaml
+AWS CloudFormation template for creating an ECR repository with cross-account access. This cloudformation will allow ECR Repository to be shared between supplied prinicipal accounts.
+### Parameters:
+RepositoryName - ECR Repository Name
+Account - Account with Cross Account Role
+### Outputs:
+RepoArn - ECR Repository ARN

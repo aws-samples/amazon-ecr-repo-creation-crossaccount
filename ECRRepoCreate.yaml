@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  AWS CloudFormation template for creating an ECR repository with cross-account access.
+Parameters:
+  RepositoryName:
+    Description: "ECR Repository Name"
+    Type: String
+    Default: ""
+  Account:
+    Description: "Account with Cross Account Role"
+    Type: String
+    Default: ""
+Resources:
+  ECRRepository: 
+    Type: AWS::ECR::Repository
+    Properties: 
+      RepositoryName: 
+        Ref: RepositoryName
+      RepositoryPolicyText: 
+        Version: "2012-10-17"
+        Statement: 
+          - 
+            Sid: AllowPushPull
+            Effect: Allow
+            Principal: 
+              AWS: 
+                - !Sub "arn:aws:iam::${AWS::AccountId}:root"
+            Action: 
+              - "ecr:BatchCheckLayerAvailability"
+              - "ecr:BatchGetImage"
+              - "ecr:CompleteLayerUpload"
+              - "ecr:DescribeImages"
+              - "ecr:GetDownloadUrlForLayer"
+              - "ecr:InitiateLayerUpload"
+              - "ecr:UploadLayerPart"
+              - "ecr:PutImage"
+Outputs:
+  RepoArn:
+    Description: "ECR Repository ARN"
+    Value: !GetAtt ECRRepository.Arn
